@@ -14,11 +14,19 @@ Park.prototype.removeDinosaur = function(dinosaur){
 };
 
 Park.prototype.mostVisitedDino = function(){
-  const a = []
-  for (dino in this.collectionOfDinosaurs){
+  const a = [];
+  const b = [];
+  for (dino of this.collectionOfDinosaurs){
     a.push(dino)
+    for (dino of a){
+      b.push(dino.guestsAttractedPerDay)
+    };
   };
-  const x = Math.max.apply(null, a);
+  const x = Math.max.apply(null, b);
+  for (dino of this.collectionOfDinosaurs){
+    if (dino.guestsAttractedPerDay === x)
+    return `The dinosaur that attracts the most visitors is the ${dino.species}.`
+  };
 };
 
 
